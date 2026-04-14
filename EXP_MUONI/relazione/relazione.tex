@@ -1,0 +1,320 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\addto\captionsitalian{\renewcommand{\abstractname}{Abstract}}
+
+\usepackage[
+  top=2.5cm, bottom=2.5cm,
+  left=2.5cm, right=2.5cm
+]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\small Laboratorio di Fisica Nucleare e Subnucleare 1}
+    \fancyhead[R]{\small A.A. 2025/2026}
+    \fancyfoot[C]{\thepage}
+\fancypagestyle{plain}
+{
+  \fancyhf{}
+  \fancyhead[L]{\small Laboratorio di Fisica}
+  \fancyhead[R]{\small A.A. 2025/2026}
+  \fancyfoot[C]{Università degli Studi di Torino\\A.A. 2025/2026}
+}
+
+\usepackage{soul}
+\usepackage{xcolor}
+\newcommand{\WIP}[1]{{\sethlcolor{cyan}\hl{#1}}}
+\newcommand{\details}{{\sethlcolor{orange}\hl{inserire dettagli}}}
+
+
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{xfrac}
+
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[
+  justification=centering,
+  labelfont={small,bf},
+  font={small}
+]{caption}
+\usepackage{subcaption}
+\usepackage{tikz}
+
+\usepackage[compat=1.0.0]{tikz-feynman}
+\usepackage[version=4,arrows=pgf-filled,
+textfontname=sffamily,
+mathfontname=mathsf]{mhchem}
+
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\usepackage{appendix}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{bibliografia.bib}
+
+
+\title{\textbf{MISURA DELLA VITA MEDIA DEL MUONE}}
+\author{Sara Barberis (sara.barberis939@edu.unito.it)
+\\ Sara Ibba (sara.ibba815@edu.unito.it)
+\\ Micaela Scamarcia (micaela.scamarcia@edu.unito.it)
+\\ Mattia Valerio (mattia.valerio@edu.unito.it)
+\\ Lorenzo Visca (lorenzo.visca846@edu.unito.it)}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\vspace{60pt}
+\begin{tikzpicture}
+\begin{feynman}
+  % Definizione vertici con coordinate esplicite
+  \vertex (i1) at (-3,  0)  {\(\mu^-\)};
+  \vertex (a)  at (-1,  0);
+  \vertex (b)  at ( 1,  -1);
+  \vertex (f1) at (3,  1.5)  {\(\nu_\mu\)};
+  \vertex (f2) at ( 3,  -0.5)  {\(e^-\)};
+  \vertex (f3) at ( 3, -1.5)  {\(\bar{\nu}_e\)};
+
+  \diagram*{
+    (i1) -- [fermion]                     (a),
+    (a)  -- [boson, edge label=\(W^-\)]   (b),
+    (a)  -- [fermion]                     (f1),
+    (b)  -- [fermion]                     (f2),
+    (b)  -- [anti fermion]                (f3),
+  };
+\end{feynman}
+\end{tikzpicture}
+
+\vspace{60pt}
+\begin{tikzpicture}
+\begin{feynman}
+  % Definizione vertici con coordinate esplicite
+  \vertex (i1) at (-3,  0)  {\(\mu^+\)};
+  \vertex (a)  at (-1,  0);
+  \vertex (b)  at ( 1,  -1);
+  \vertex (f1) at (3,  1.5)  {\(\bar{\nu}_\mu\)};
+  \vertex (f2) at ( 3,  -0.5)  {\(e^+\)};
+  \vertex (f3) at ( 3, -1.5)  {\(\nu_e\)};
+
+  \diagram*{
+    (i1) -- [anti fermion]                (a),
+    (a)  -- [boson, edge label=\(W^+\)]   (b),
+    (a)  -- [anti fermion]                (f1),
+    (b)  -- [anti fermion]                (f2),
+    (b)  -- [fermion]                     (f3),
+  };
+\end{feynman}
+\end{tikzpicture}
+\end{center}
+
+
+\newpage
+
+\begin{abstract}
+    L'esperienza ha avuto come obiettivo la misurazione della vita media dei muoni provenienti dai raggi cosmici, a tale scopo è stato realizzato un apparato sperimentale basato su rivelatori a scintillazione accoppiati a tubi fotomoltiplicatori e moduli di elettronica avanzata per la registrazione e l'analisi degli eventi.
+    Il risultato da noi ottenuto è \WIP{[nostra stima della vita media del muone, dire velocemente se abbiamo accordo con quanto atteso]}.
+    L'analisi temporale è stata affiancata da uno studio dello spettro energetico dei segnali uscenti dai rivelatori, evidenziando le correlazioni presenti tra il tipo di segnale osservato e l'energia depositata. \WIP{[rivedere in base a cosa troviamo effettivamente]}
+  
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Fisica dell'esperienza}
+    L'interazione dei raggi cosmici primari con l'atmosfera terrestre porta alla produzione di sciami di adroni leggeri (principalmente $\pi^\pm$ e $\pi^0$, distribuiti in modo quasi uniforme con una leggera prevalenza di $\pi^+$ rispetto a $\pi^-$).
+    \\
+    Attraversando l'atmosfera una parte sempre maggiore dell'energia viene dispersa nel canale elettromagnetico tramite il processo di decadimento $\pi^0\to\gamma\gamma$, mentre i pioni carichi riescono a sostenere lo sciame per alcune generazioni prima di perdere energia e decadere.
+    
+    I pioni carichi decadono per interazione debole in un muone e un neutrino/antineutrino per conservazione del numero leptonico; i muoni così prodotti sono molto penetranti perché non partecipano ai processi di interazione forte e hanno una massa sufficiente a non rallentare in modo eccessivo per processi di bremsstrahlung, la loro vita media $\tau_\mu=2.197\unit{\micro\second}$ è sufficiente a farli arrivare fino al livello del mare, dove si registra un flusso di muoni di circa $130\unit{\hertz\per\meter\squared}$ rispetto ad un flusso totale di raggi cosmici di circa $180\unit{\hertz\per\meter\squared}$.
+    
+    I muoni decadono per interazione debole secondo i processi descritti dai seguenti diagrammi:
+    
+    \vspace{20pt}
+    \begin{center}
+    \begin{adjustbox}{width=0.6\textwidth}
+    \begin{tikzpicture}
+    \begin{feynman}
+      % Definizione vertici con coordinate esplicite
+      \vertex (i1) at (-3,  0)  {\(\mu^-\)};
+      \vertex (a)  at (-1,  0);
+      \vertex (b)  at ( 1,  -1);
+      \vertex (f1) at (3,  1.5)  {\(\nu_\mu\)};
+      \vertex (f2) at ( 3,  -0.5)  {\(e^-\)};
+      \vertex (f3) at ( 3, -1.5)  {\(\bar{\nu}_e\)};
+    
+      \diagram*{
+        (i1) -- [fermion]                     (a),
+        (a)  -- [boson, edge label=\(W^-\)]   (b),
+        (a)  -- [fermion]                     (f1),
+        (b)  -- [fermion]                     (f2),
+        (b)  -- [anti fermion]                (f3),
+      };
+    \end{feynman}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+    \begin{feynman}
+      % Definizione vertici con coordinate esplicite
+      \vertex (i1) at (-3,  0)  {\(\mu^+\)};
+      \vertex (a)  at (-1,  0);
+      \vertex (b)  at ( 1,  -1);
+      \vertex (f1) at (3,  1.5)  {\(\bar{\nu}_\mu\)};
+      \vertex (f2) at ( 3,  -0.5)  {\(e^+\)};
+      \vertex (f3) at ( 3, -1.5)  {\(\nu_e\)};
+    
+      \diagram*{
+        (i1) -- [anti fermion]                (a),
+        (a)  -- [boson, edge label=\(W^+\)]   (b),
+        (a)  -- [anti fermion]                (f1),
+        (b)  -- [anti fermion]                (f2),
+        (b)  -- [fermion]                     (f3),
+      };
+    \end{feynman}
+    \end{tikzpicture}
+    \end{adjustbox}
+    \end{center}
+    
+    \vspace{20pt}
+    Sperimentalmente vengono osservati gli eventi relativi ai muoni "lenti" $\left(T_\mu\sim100\unit{\mega\electronvolt}\right)$ che decadono all'interno del materiale attivo, che nel nostro caso è uno scintillatore composto da vetro scintillante, di seguito indicato con la sigla SG: i muoni che perdono tutta la loro energia all'interno del vetro si fermano e decadono, portando alla produzione di un elettrone (o positrone) che perde tutta la sua energia generando un secondo segnale all'interno dello scintillatore. Per conservazione dell'impulso nel processo di decadimento a tre corpi il leptone carico prodotto può assumere uno spettro continuo di energia con un endpoint $T_e=0.5m_\mu$, ottenuto quando il leptone carico viene emesso \textit{back-to-back} rispetto alla coppia di neutrini (che escono dal rivelatore senza produrre segnale).
+
+    Nel caso dei muoni negativi, oltre al "puro" processo di decadimento è possibile anche osservare eventi di cattura del muone da parte dei nuclei atomici: se $\mu^-$ è abbastanza lento può essere catturato dal campo coulombiano del nucleo e scendere fino al livello fondamentale con l'emissione di raggi X ed elettroni Auger, una volta arrivato a tale livello si trova molto vicino al nucleo e può essere catturato per via radiativa ($\mu^-+p\to n+\nu_\mu+\gamma$) oppure non radiativa ($\mu^-+p\to n+\nu_\mu$), in questo caso si ha la formazione di un nucleo eccitato che decadendo può produrre un ulteriore segnale.
+    \\
+    La probabilità del processo e il tempo medio di cattura sono fortemente dipendenti dal materiale in cui si trova il muone, in materiali ad alto Z il tempo medio di cattura è nell'ordine di $10^2\unit{\nano\second}$.
+
+\section{Apparato sperimentale}
+
+    \subsection{Scintillatori e PMT}
+    
+        Il segnale relativo al processo studiato viene generato all'interno di uno scintillatore in vetro scintillante composto principalmente da \ce{SiO2} (42.5\%) e \ce{BaO3} (43.5\%), con centri di scintillazione di \ce{Ce2O3} (1.5\%).
+        
+        Lo scintillatore ha una densità $\rho=3.3\unit{\gram\per\centi\metre\cubed}$ e le seguenti dimensioni:
+
+        \hl{nota: lunghezza sovrastimata perché c'è una specie di piastra alla fine, capire che incertezza mettere}
+        
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|}
+            \toprule
+            \multicolumn{3}{|c|}{\textbf{Scintillatore SG}} \\
+            \midrule
+            Lunghezza (\unit{\centi\metre}) & Larghezza (\unit{\centi\metre}) & Spessore (\unit{\centi\metre})\\
+            \midrule
+            $63.0\pm0.1$ & $17.0\pm0.1$ & $17.0\pm0.1$\\
+            \bottomrule
+            \end{tabular}
+            \caption{Dimensioni di SG}
+            \label{t:SG_dimensioni}
+        \end{table}
+
+        Lo spessore di massa dello scintillatore porta ad una perdita di energia media $\Delta E\approx110\unit{\mega\electronvolt}$ per particelle al minimo di ionizzazione che incidono verticalmente, quindi i muoni che incidono su SG con un'energia $\approx10^2\unit{\mega\electronvolt}$ perdono tutta la loro energia cinetica e decadono all'interno del materiale (nella pratica possono essere fermati anche muoni leggermente più energetici, che attraversando il materiale entrano nel regime $\sfrac{1}{\beta^2}$ della formula di Bethe-Bloch, e muoni ancora più energetici che attraversano lo scintillatore in diagonale).
+        \\
+        Lo scintillatore SG è accoppiato ad un tubo fotomoltiplicatore \details.
+
+        La selezione di eventi potenzialmente "buoni" di SG viene effettuata tramite un sistema di trigger basato su due scintillatori plastici ($\rho\approx1\unit{\gram\per\centi\metre\cubed}$):
+
+        \begin{itemize}
+            \item uno scintillatore, indicato con S1 e posizionato sopra SG, il cui segnale viene messo in coincidenza con quello di SG per rimuovere gli eventi di buio di quest'ultimo;
+            \item uno scintillatore, indicato con S2 e posizionato sotto SG, il cui segnale viene messo in anticoincidenza con quello di S1 ed SG per rimuovere gli eventi in cui il muone riesce a oltrepassare SG senza decadere.
+        \end{itemize}
+    
+        La disposizione dei rivelatori è scelta basandosi sul fatto che il flusso di raggi cosmici non ha una distribuzione angolare isotropa, ma dipende dall'angolo $\theta$ rispetto all'asse zenitale:
+    
+        \begin{equation*}
+            \dv{N}{\Omega}\propto\cos^2\theta
+        \end{equation*}
+
+        Durante l'esperienza è stato utilizzato anche un quarto scintillatore plastico più piccolo, indicato con S3, posizionato sopra S1 per migliorare la misura dell'efficienza di SG.
+
+          \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|}
+            \toprule
+            \midrule
+            Scintillatore &Lunghezza (\unit{\centi\metre}) & Larghezza (\unit{\centi\metre}) & Spessore (\unit{\centi\metre})\\
+            \midrule
+            \textbf{S1} & $40.0\pm0.1$ & $11.0\pm0.1$ & $1.6\pm0.1$\\
+            \textbf{S2} & $70.0\pm0.1$ & $16.0\pm0.1$ & $1.0\pm0.1$\\
+            \textbf{S3} & $11.0\pm0.1$ & $10.0\pm0.1$ & $1.0\pm0.1$\\
+            \bottomrule
+            \end{tabular}
+            \caption{Dimensioni degli scintillatori plastici}
+            \label{t:S1_S2_S3_dimensioni}
+        \end{table}     
+        
+        Lo spessore di massa degli scintillatori plastici porta ad una perdita di energia media inferiore ai $4\unit{\mega\electronvolt}$ per MIP verticali, questo valore è quindi trascurabile e non comporta un assorbimento significativo prima di SG.
+
+        Tutti gli scintillatori plastici sono accoppiati a dei tubi fotomoltiplicatori \details XP2020 tramite delle guide di luce \textit{fishtail}.
+
+    
+    \subsection{Elettronica di acquisizione e analisi}
+        \hl{non so se mettere il disegno completo dell'elettronica o l'elenco dei moduli e poi rimandare i singoli disegni alle varie fasi dell'esperienza}
+
+        \hl{Se manteniamo l'elenco sarebbe carino mettere per ogni modulo il riferimento ai circuiti in cui viene utilizzato, ma è un po' sbattopoli}
+
+        Di seguito è riportato l'elenco dei moduli di elettronica e degli strumenti utilizzati durante lo svolgimento dell'esperienza:
+    
+        \begin{itemize}
+            \item \WIP{WIP}
+            \item Scaler NIM \details
+            \item Modulo di coincidenza \details
+            \item Alimentatore ad alta tensione \details 
+            \item Discriminatore \details
+            \item Linear fan-out \details
+            \item Impulsatore \details
+            \item Oscilloscopio \details
+            \item Multimetro \details
+            \item Cavi segnale NIM \hl{standard connettore, ritardi}
+            \item Impedenze di terminazione ("tappi") da $50\unit{\ohm}$ 
+        \end{itemize}
+
+
+
+     
+    \newpage
+\section{Inizializzazione e calibrazione dei rivelatori}
+
+    \subsection{Tensione di lavoro degli scintillatori plastici}
+        \hl{tensione di lavoro, curve di rate singolo, osservazione del segnale all'oscilloscopio}
+
+    \subsection{Discriminazione dei segnali}
+        \hl{Scelta soglie di discriminazione, scelta delle larghezze del segnale in uscita}
+
+    \subsection{Temporizzazione dei segnali}
+        \hl{Temporizzazione per curva di efficienza di SG, osservazione del time walk, S1 ed S2 risultano già temporizzati, spiegare perché S3 arriva dopo}
+
+    \subsection{Tensione di lavoro di SG}
+        \hl{tensione di lavoro, curve di rate singolo, osservazione del segnale all'oscilloscopio} \WIP{Curva di efficienza con le coincidenze 2-3, run notturna con S3 alla tensione scelta}
+
+    \subsection{Curva di coincidenza}
+        \WIP{Curva di coincidenza una volta scelta HV di SG, coincidenze accidentali, rate osservato vs atteso sia di segnale che di fondo confrontando i rate in singola visti lunedì}
+
+
+\section{Implementazione del sistema di trigger}
+
+\section{Misura della vita media del muone}
+
+\section{Analisi ADC}
+
+\section{Risultati ottenuti}
+
+\section{Conclusioni}
+
+\printbibliography
+
+\newpage
+\begin{appendices}
+  \section{a}
+\end{appendices}
+
+\end{document}
+
+%nota per il futuro: ricordiamoci di uniformare la notazione usata per descrivere il segnale es. altezza/ampiezza, lunghezza/durata
+%nota da Visca: se scrivo da fisso ho la tastiera inglese che non ha gli accenti, ogni tanto scrivo parole in inglese a caso because non ho voglia di cercare gli accenti poi sistemo da portatile
+%sto usando /WIP per le cose che dovremo aggiungere alla fine, /hl per le cose che non avevo voglia di fare adesso

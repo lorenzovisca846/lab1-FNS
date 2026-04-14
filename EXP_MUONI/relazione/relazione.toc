@@ -1,0 +1,18 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Fisica dell'esperienza}{3}{section.1}%
+\contentsline {section}{\numberline {2}Apparato sperimentale}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Scintillatori e PMT}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Elettronica di acquisizione e analisi}{5}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Inizializzazione e calibrazione dei rivelatori}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Tensione di lavoro degli scintillatori plastici}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Discriminazione dei segnali}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Temporizzazione dei segnali}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Tensione di lavoro di SG}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Curva di coincidenza}{6}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Implementazione del sistema di trigger}{6}{section.4}%
+\contentsline {section}{\numberline {5}Misura della vita media del muone}{6}{section.5}%
+\contentsline {section}{\numberline {6}Analisi ADC}{6}{section.6}%
+\contentsline {section}{\numberline {7}Risultati ottenuti}{6}{section.7}%
+\contentsline {section}{\numberline {8}Conclusioni}{6}{section.8}%
+\contentsline {section}{\numberline {A}a}{7}{appendix.1.Alph1}%
