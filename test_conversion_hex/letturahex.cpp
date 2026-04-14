@@ -12,7 +12,7 @@ Esempio: il file test.dat contiene dati esadecimali relativi a 50 eventi. Ogni e
 [ valore 3 (unsigned int 32bit)]
 [ 4 bytes vuoti (contenenti zeri)]
 
-Calcolare le medie per i tre set di valori.
+Calcolare le medie per i tre set di valori (soluzione: mean_A = 100, mean_B = 200, mean_C = 1000)
 
 !I valori nel file sono scritti in big endian, vanno convertiti a little endian
 */

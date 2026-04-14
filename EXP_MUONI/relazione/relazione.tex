@@ -215,7 +215,7 @@ mathfontname=mathsf]{mhchem}
 
         Lo spessore di massa dello scintillatore porta ad una perdita di energia media $\Delta E\approx110\unit{\mega\electronvolt}$ per particelle al minimo di ionizzazione che incidono verticalmente, quindi i muoni che incidono su SG con un'energia $\approx10^2\unit{\mega\electronvolt}$ perdono tutta la loro energia cinetica e decadono all'interno del materiale (nella pratica possono essere fermati anche muoni leggermente più energetici, che attraversando il materiale entrano nel regime $\sfrac{1}{\beta^2}$ della formula di Bethe-Bloch, e muoni ancora più energetici che attraversano lo scintillatore in diagonale).
         \\
-        Lo scintillatore SG è accoppiato ad un tubo fotomoltiplicatore \details.
+        Lo scintillatore SG è accoppiato ad un tubo fotomoltiplicatore Hamamatsu R1513.
 
         La selezione di eventi potenzialmente "buoni" di SG viene effettuata tramite un sistema di trigger basato su due scintillatori plastici ($\rho\approx1\unit{\gram\per\centi\metre\cubed}$):
 
@@ -250,7 +250,7 @@ mathfontname=mathsf]{mhchem}
         
         Lo spessore di massa degli scintillatori plastici porta ad una perdita di energia media inferiore ai $4\unit{\mega\electronvolt}$ per MIP verticali, questo valore è quindi trascurabile e non comporta un assorbimento significativo prima di SG.
 
-        Tutti gli scintillatori plastici sono accoppiati a dei tubi fotomoltiplicatori \details XP2020 tramite delle guide di luce \textit{fishtail}.
+        Tutti gli scintillatori plastici sono accoppiati a dei tubi fotomoltiplicatori Photonis XP2020 tramite delle guide di luce \textit{fishtail}.
 
     
     \subsection{Elettronica di acquisizione e analisi}
@@ -262,14 +262,15 @@ mathfontname=mathsf]{mhchem}
     
         \begin{itemize}
             \item \WIP{WIP}
-            \item Scaler NIM \details
-            \item Modulo di coincidenza \details
-            \item Alimentatore ad alta tensione \details 
-            \item Discriminatore \details
-            \item Linear fan-out \details
-            \item Impulsatore \details
-            \item Oscilloscopio \details
-            \item Multimetro \details
+            \item Modulo di delay CAEN N108A
+            \item Scaler NIM CAEN N145
+            \item Modulo di coincidenza LeCroy 465
+            \item Alimentatore ad alta tensione CAEN N472 
+            \item Discriminatore Phillips 730
+            \item Linear fan-out CAEN N401
+            \item Impulsatore HP 8082A
+            \item Oscilloscopio Tektronix TDS 2022
+            \item Multimetro MeTex M3270D
             \item Cavi segnale NIM \hl{standard connettore, ritardi}
             \item Impedenze di terminazione ("tappi") da $50\unit{\ohm}$ 
         \end{itemize}
